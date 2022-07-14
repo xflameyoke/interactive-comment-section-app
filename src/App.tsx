@@ -1,5 +1,12 @@
 import React from 'react';
+import GlobalStyle from './theme/globalStyles';
+import { Comment } from './components/comment';
 
-const App = () => <div>Hello</div>;
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Comment />
+  </>
+);
 
 export default App;
