@@ -1,17 +1,44 @@
 import React from 'react';
-import data from '../../data.json';
+import {
+  CommentScore,
+  CommentStyled,
+  UserStyled,
+  UserStyledDate,
+  UserStyledName,
+  UserStyledReply,
+} from './comment.styled';
+interface CommentProps {
+  id: number;
+  content: string;
+  score: number;
+  createdAt: string;
+  user: {
+    image: {
+      png: string;
+    };
+    username: string;
+  };
+}
 
-const Comment = () => {
-  const mapData = Object.values(data.comments).map((value) => (
-    <div key={value.id}>
-      <div>
-        <img src={value.user.image.png} alt="comment_avatar" />
-        {value.content}
-      </div>
+const Comment = (props: CommentProps) => (
+  <CommentStyled key={props.id}>
+    <div>
+      <CommentScore>
+        <div>+</div>
+        {props.score}
+        <div>-</div>
+      </CommentScore>
     </div>
-  ));
-
-  return <>{mapData}</>;
-};
+    <div>
+      <UserStyled>
+        <img src={props.user.image.png} />{' '}
+        <UserStyledName>{props.user.username}</UserStyledName>
+        <UserStyledDate>{props.createdAt}</UserStyledDate>
+        <UserStyledReply>reply</UserStyledReply>
+      </UserStyled>
+      <div>{props.content}</div>
+    </div>
+  </CommentStyled>
+);
 
 export default Comment;

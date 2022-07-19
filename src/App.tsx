@@ -1,11 +1,11 @@
 import React from 'react';
 import GlobalStyle from './theme/globalStyles';
-import { Comment } from './components/comment';
+import { CommentList } from './components/commentList';
 
 const App = () => (
   <>
     <GlobalStyle />
-    <Comment />
+    <CommentList />
   </>
 );
 
