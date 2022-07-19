@@ -18,6 +18,10 @@ export const CommentScore = styled.div`
   border: 1px solid purple;
   border-radius: 25px;
   background: lightgrey;
+
+  img {
+    color: ${({ theme }) => theme.colors.moderateBlue};
+  }
 `;
 
 export const UserStyled = styled.div`

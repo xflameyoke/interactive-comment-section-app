@@ -10,6 +10,8 @@ import {
   UserStyledReply,
 } from './comment.styled';
 import IconReply from '../../icons/icon-reply.svg';
+import IconPlus from '../../icons/icon-plus.svg';
+import IconMinus from '../../icons/icon-minus.svg';
 
 interface CommentProps {
   id: number;
@@ -28,9 +30,9 @@ const Comment = (props: CommentProps) => (
   <CommentStyled key={props.id}>
     <div>
       <CommentScore>
-        <div>+</div>
+        <img src={IconPlus} alt="IconPlus" />
         {props.score}
-        <div>-</div>
+        <img src={IconMinus} alt="IconMinus" />
       </CommentScore>
     </div>
     <div>
