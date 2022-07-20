@@ -8,6 +8,7 @@ import {
   UserStyledDate,
   UserStyledName,
   UserStyledReply,
+  VoteButtonStyled,
 } from './comment.styled';
 import IconReply from '../../icons/icon-reply.svg';
 import IconPlus from '../../icons/icon-plus.svg';
@@ -30,9 +31,13 @@ const Comment = (props: CommentProps) => (
   <CommentStyled key={props.id}>
     <div>
       <CommentScore>
-        <img src={IconPlus} alt="IconPlus" />
+        <VoteButtonStyled>
+          <img src={IconPlus} alt="IconPlus" />
+        </VoteButtonStyled>
         {props.score}
-        <img src={IconMinus} alt="IconMinus" />
+        <VoteButtonStyled>
+          <img src={IconMinus} alt="IconMinus" />
+        </VoteButtonStyled>
       </CommentScore>
     </div>
     <div>
@@ -42,10 +47,10 @@ const Comment = (props: CommentProps) => (
         <UserStyledDate>{props.createdAt}</UserStyledDate>
         <UserStyledReply>
           <IconReplyStyled src={IconReply} alt="IconReply" />
-          reply
+          Reply
         </UserStyledReply>
       </UserStyled>
-      <div>{props.content}</div>
+      <p>{props.content}</p>
     </div>
   </CommentStyled>
 );

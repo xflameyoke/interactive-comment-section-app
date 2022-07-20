@@ -5,22 +5,39 @@ export const CommentStyled = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 11fr;
   grid-column-gap: 20px;
+
+  p {
+    width: 90%;
+    color: ${({ theme }) => theme.colors.grayishBlue};
+    font-size: 12px;
+  }
 `;
 
 export const CommentScore = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 5px;
   flex-direction: column;
+  width: 30px;
+  height: 90%;
+  color: ${({ theme }) => theme.colors.moderateBlue};
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.lightGray};
+  margin-left: 5px;
+`;
+
+export const VoteButtonStyled = styled.button`
+  border: none;
   width: 20px;
-  height: 100%;
-  color: purple;
-  border: 1px solid purple;
+  height: 20px;
+  background: ${({ theme }) => theme.colors.lightGray};
+  cursor: pointer;
   border-radius: 25px;
-  background: lightgrey;
+  color: lightgrey;
 
   img {
-    color: ${({ theme }) => theme.colors.moderateBlue};
+    color: '#FFFFFF';
   }
 `;
 
@@ -31,16 +48,18 @@ export const UserStyled = styled.div`
 
 export const UserAvatar = styled.img`
   height: 35px;
+  margin-right: 10px;
 `;
 
 export const UserStyledName = styled.div`
   color: black;
   margin: 5px;
   font-weight: bold;
+  margin-right: 10px;
 `;
 
 export const UserStyledDate = styled.div`
-  color: grey;
+  color: ${({ theme }) => theme.colors.grayishBlue};
   font-size: 12px;
 `;
 
