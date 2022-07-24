@@ -31,11 +31,11 @@ const Comment = (props: CommentProps) => {
   const [vote, setVote] = useState<number>(props.score);
 
   const voteUp = () => {
-    setVote(props.score + 1);
+    setVote((lastVote) => lastVote + 1);
   };
 
   const voteDown = () => {
-    setVote(props.score - 1);
+    setVote((lastVote) => lastVote - 1);
   };
 
   return (
