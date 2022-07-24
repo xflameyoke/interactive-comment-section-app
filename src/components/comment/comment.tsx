@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CommentScore,
   CommentStyled,
@@ -27,32 +27,44 @@ interface CommentProps {
   };
 }
 
-const Comment = (props: CommentProps) => (
-  <CommentStyled key={props.id}>
-    <div>
-      <CommentScore>
-        <VoteButtonStyled>
-          <img src={IconPlus} alt="IconPlus" />
-        </VoteButtonStyled>
-        {props.score}
-        <VoteButtonStyled>
-          <img src={IconMinus} alt="IconMinus" />
-        </VoteButtonStyled>
-      </CommentScore>
-    </div>
-    <div>
-      <UserStyled>
-        <UserAvatar src={props.user.image.png} alt="UserAvatar" />
-        <UserStyledName>{props.user.username}</UserStyledName>
-        <UserStyledDate>{props.createdAt}</UserStyledDate>
-        <UserStyledReply>
-          <IconReplyStyled src={IconReply} alt="IconReply" />
-          Reply
-        </UserStyledReply>
-      </UserStyled>
-      <p>{props.content}</p>
-    </div>
-  </CommentStyled>
-);
+const Comment = (props: CommentProps) => {
+  const [vote, setVote] = useState<number>(props.score);
+
+  const voteUp = () => {
+    setVote(props.score + 1);
+  };
+
+  const voteDown = () => {
+    setVote(props.score - 1);
+  };
+
+  return (
+    <CommentStyled key={props.id}>
+      <div>
+        <CommentScore>
+          <VoteButtonStyled onClick={voteUp}>
+            <img src={IconPlus} alt="IconPlus" />
+          </VoteButtonStyled>
+          {vote}
+          <VoteButtonStyled onClick={voteDown}>
+            <img src={IconMinus} alt="IconMinus" />
+          </VoteButtonStyled>
+        </CommentScore>
+      </div>
+      <div>
+        <UserStyled>
+          <UserAvatar src={props.user.image.png} alt="UserAvatar" />
+          <UserStyledName>{props.user.username}</UserStyledName>
+          <UserStyledDate>{props.createdAt}</UserStyledDate>
+          <UserStyledReply>
+            <IconReplyStyled src={IconReply} alt="IconReply" />
+            Reply
+          </UserStyledReply>
+        </UserStyled>
+        <p>{props.content}</p>
+      </div>
+    </CommentStyled>
+  );
+};
 
 export default Comment;
