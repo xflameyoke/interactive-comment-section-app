@@ -6,7 +6,7 @@ import { CommentListStyled } from './commentList.styled';
 const CommentList = () => {
   const mappedData = Object.values(data.comments).map(
     ({ id, content, user, score, createdAt }) => (
-      <CommentListStyled>
+      <CommentListStyled key={id}>
         <Comment
           content={content}
           id={id}
@@ -17,7 +17,6 @@ const CommentList = () => {
       </CommentListStyled>
     )
   );
-
   return <>{mappedData}</>;
 };
 

@@ -39,7 +39,7 @@ const Comment = (props: CommentProps) => {
   };
 
   return (
-    <CommentStyled key={props.id}>
+    <CommentStyled>
       <div>
         <CommentScore>
           <VoteButtonStyled onClick={voteUp}>
