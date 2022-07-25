@@ -1,10 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const come = keyframes`
+  0% { 
+    opacity: 0; transform: translateY(-100%); 
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const CommentStyled = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 11fr;
   grid-column-gap: 20px;
+  animation-name: ${come};
+  animation-duration: 1s;
+  animation-iteration-count: ease-in;
 
   p {
     width: 90%;
