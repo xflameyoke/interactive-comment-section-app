@@ -16,6 +16,9 @@ export const CommentStyled = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 11fr;
   grid-column-gap: 20px;
+  background-color: ${({ theme }) => theme.colors.white};
+  padding: 20px;
+  border-radius: 10px;
   animation-name: ${come};
   animation-duration: 1s;
   animation-iteration-count: ease-in;
