@@ -1,0 +1,54 @@
+import styled, { keyframes } from 'styled-components';
+
+const come = keyframes`
+  0% { 
+    opacity: 0; transform: translateY(-100%); 
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const ReplyStyled = styled.form`
+  padding-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.white};
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  padding-top: 0px;
+  animation-name: ${come};
+  animation-duration: 1s;
+  animation-iteration-count: ease-in;
+
+  div {
+    margin: 20px;
+  }
+`;
+
+export const ReplyInput = styled.input`
+  position: relative;
+  resize: none;
+  margin: 20px;
+  width: 70%;
+  height: 80px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  color: ${({ theme }) => theme.colors.darkBlue};
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 10px 0 50px 15px;
+
+  &:focus {
+    border: 2px solid red;
+  }
+`;
+
+export const ReplyAvatar = styled.img`
+  margin: 20px 0 0 30px;
+  width: 30px;
+  height: 30px;
+`;

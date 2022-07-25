@@ -28,6 +28,12 @@ export const CommentStyled = styled.div`
     color: ${({ theme }) => theme.colors.grayishBlue};
     font-size: 12px;
   }
+
+  input {
+    width: 90%;
+    height: 50px;
+    border: none;
+  }
 `;
 
 export const CommentScore = styled.div`
@@ -42,6 +48,7 @@ export const CommentScore = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.lightGray};
   margin-left: 5px;
+  font-weight: bold;
 `;
 
 export const VoteButtonStyled = styled.button`
@@ -86,10 +93,15 @@ export const UserStyledReply = styled.div`
   border: none;
   background: white;
   cursor: pointer;
+  font-weight: bold;
 `;
 
 export const IconReplyStyled = styled.img`
   width: 12px;
   height: 12px;
   margin-right: 3px;
+`;
+
+export const CommentReply = styled.div`
+  margin: 10px auto 0 auto;
 `;
