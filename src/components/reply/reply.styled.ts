@@ -11,22 +11,22 @@ const come = keyframes`
   }
 `;
 
-export const ReplyStyled = styled.form`
+export const ReplyStyled = styled.div`
   padding-top: 20px;
   width: 100%;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
-  align-items: start;
+  align-items: first-baseline;
   justify-content: space-around;
   padding-top: 0px;
   animation-name: ${come};
   animation-duration: 1s;
   animation-iteration-count: ease-in;
+`;
 
-  div {
-    margin: 20px;
-  }
+export const ReplyButtonWrapper = styled.div`
+  margin: 20px 40px 0 0;
 `;
 
 export const ReplyInput = styled.input`
@@ -35,7 +35,7 @@ export const ReplyInput = styled.input`
   margin: 20px;
   width: 70%;
   height: 80px;
-  border: 2px solid lightgray;
+  border: 2px solid ${({ theme }) => theme.colors.lightGray};
   border-radius: 10px;
   color: ${({ theme }) => theme.colors.darkBlue};
   font-size: 12px;

@@ -11,9 +11,9 @@ import {
   UserStyledReply,
   VoteButtonStyled,
 } from './comment.styled';
-import IconReply from '../../icons/icon-reply.svg';
-import IconPlus from '../../icons/icon-plus.svg';
-import IconMinus from '../../icons/icon-minus.svg';
+import IconReply from '../../assets/icons/icon-reply.svg';
+import IconPlus from '../../assets/icons/icon-plus.svg';
+import IconMinus from '../../assets/icons/icon-minus.svg';
 import Reply from '../reply/reply';
 
 interface CommentProps {

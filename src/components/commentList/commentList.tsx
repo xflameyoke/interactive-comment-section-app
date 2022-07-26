@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comment/comment';
+import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
 
 const CommentList = () => {
@@ -16,7 +17,7 @@ const CommentList = () => {
   }, []);
 
   const mappedData = comments.map(({ id, content, user, score, createdAt }) => (
-    <CommentListStyled key={id}>
+    <div key={id}>
       <Comment
         content={content}
         id={id}
@@ -24,9 +25,14 @@ const CommentList = () => {
         score={score}
         createdAt={createdAt}
       />
-    </CommentListStyled>
+    </div>
   ));
-  return <>{mappedData}</>;
+  return (
+    <CommentListStyled>
+      {mappedData}
+      <NewComment />
+    </CommentListStyled>
+  );
 };
 
 export default CommentList;

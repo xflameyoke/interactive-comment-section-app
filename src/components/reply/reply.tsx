@@ -1,14 +1,20 @@
 import React from 'react';
-import { ReplyAvatar, ReplyInput, ReplyStyled } from './reply.styled';
+import {
+  ReplyAvatar,
+  ReplyButtonWrapper,
+  ReplyInput,
+  ReplyStyled,
+} from './reply.styled';
 import ReplyButton from '../replyButton/replyButton';
+import Avatar from '../../assets/avatars/image-juliusomo.png';
 
 const Reply = () => (
   <ReplyStyled>
-    <ReplyAvatar alt="Current User" />
+    <ReplyAvatar src={Avatar} alt="Current User" />
     <ReplyInput type="text" />
-    <div>
+    <ReplyButtonWrapper>
       <ReplyButton />
-    </div>
+    </ReplyButtonWrapper>
   </ReplyStyled>
 );
 
