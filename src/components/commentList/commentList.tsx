@@ -1,22 +1,31 @@
-import React from 'react';
-import data from '../../data.json';
+import React, { useEffect, useState } from 'react';
 import Comment from '../comment/comment';
 import { CommentListStyled } from './commentList.styled';
 
 const CommentList = () => {
-  const mappedData = Object.values(data.comments).map(
-    ({ id, content, user, score, createdAt }) => (
-      <CommentListStyled key={id}>
-        <Comment
-          content={content}
-          id={id}
-          user={user}
-          score={score}
-          createdAt={createdAt}
-        />
-      </CommentListStyled>
-    )
-  );
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('./data.json');
+      const data = await response.json();
+      setComments(data.comments);
+    };
+
+    getData();
+  }, []);
+
+  const mappedData = comments.map(({ id, content, user, score, createdAt }) => (
+    <CommentListStyled key={id}>
+      <Comment
+        content={content}
+        id={id}
+        user={user}
+        score={score}
+        createdAt={createdAt}
+      />
+    </CommentListStyled>
+  ));
   return <>{mappedData}</>;
 };
 
