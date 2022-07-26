@@ -12,7 +12,7 @@ const come = keyframes`
   }
 `;
 
-export const NewCommentStyled = styled.div`
+export const AddCommentStyled = styled.div`
   margin-top: 10px;
   padding: 20px;
   display: flex;
@@ -26,12 +26,12 @@ export const NewCommentStyled = styled.div`
   animation-iteration-count: ease-in;
 `;
 
-export const NewCommentAvatar = styled.img`
+export const AddCommentAvatar = styled.img`
   width: 35px;
   height: 35px;
 `;
 
-export const NewCommentInput = styled.input`
+export const AddCommentInput = styled.input`
   width: 70%;
   height: 100px;
   border: 2px solid ${({ theme }) => theme.colors.lightGray};
@@ -45,10 +45,11 @@ export const NewCommentInput = styled.input`
   }
 
   &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.darkBlue};
+    outline: none;
+    border: 2px solid ${({ theme }) => theme.colors.lightGray};
   }
 `;
 
-export const NewCommentButtonWrapper = styled.div`
+export const AddCommentButtonWrapper = styled.div`
   margin-right: 10px;
 `;

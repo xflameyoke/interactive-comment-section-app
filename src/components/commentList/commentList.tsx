@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comment/comment';
-import NewComment from '../newComment/newComment';
+import AddComment from '../newComment/addComment';
 import { CommentListStyled } from './commentList.styled';
+
+interface Comment {
+  id: number;
+  content: string;
+  createdAt: number;
+  score: number;
+  username: string;
+  currentUser: boolean;
+  replies: [];
+}
 
 const CommentList = () => {
   const [comments, setComments] = useState([]);
@@ -30,7 +40,7 @@ const CommentList = () => {
   return (
     <CommentListStyled>
       {mappedData}
-      <NewComment />
+      <AddComment />
     </CommentListStyled>
   );
 };

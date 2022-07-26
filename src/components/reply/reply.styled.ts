@@ -12,6 +12,7 @@ const come = keyframes`
 `;
 
 export const ReplyStyled = styled.div`
+  margin: 10px 0 10px 0;
   padding-top: 20px;
   width: 100%;
   border-radius: 10px;
@@ -43,7 +44,8 @@ export const ReplyInput = styled.input`
   padding: 10px 0 50px 15px;
 
   &:focus {
-    border: 2px solid red;
+    outline: none;
+    border: 2px solid ${({ theme }) => theme.colors.darkBlue};
   }
 `;
 
