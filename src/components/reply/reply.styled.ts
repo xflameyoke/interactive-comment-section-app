@@ -12,12 +12,13 @@ const come = keyframes`
 `;
 
 export const ReplyStyled = styled.div`
-  margin: 10px 0 10px 0;
+  margin: 10px 0 10px auto;
   padding-top: 20px;
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
+  gap: 15px;
   align-items: first-baseline;
   justify-content: space-around;
   padding-top: 0px;
@@ -30,27 +31,29 @@ export const ReplyButtonWrapper = styled.div`
   margin: 20px 40px 0 0;
 `;
 
-export const ReplyInput = styled.input`
-  position: relative;
-  resize: none;
-  margin: 20px;
-  width: 70%;
-  height: 80px;
-  border: 2px solid ${({ theme }) => theme.colors.lightGray};
-  border-radius: 10px;
-  color: ${({ theme }) => theme.colors.darkBlue};
-  font-size: 12px;
-  box-sizing: border-box;
-  padding: 10px 0 50px 15px;
+export const ReplyText = styled.div`
+  color: red;
+`;
 
-  &:focus {
-    outline: none;
-    border: 2px solid ${({ theme }) => theme.colors.darkBlue};
-  }
+export const ReplyYou = styled.div`
+  border-radius: 5px;
+  height: 20px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 2px;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.moderateBlue};
 `;
 
 export const ReplyAvatar = styled.img`
   margin: 20px 0 0 30px;
   width: 30px;
   height: 30px;
+`;
+
+export const ReplyLine = styled.div`
+  display: flex;
+  border: 1px solid ${({ theme }) => theme.colors.darkBlue};
 `;

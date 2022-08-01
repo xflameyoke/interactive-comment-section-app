@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   CommentReply,
-  CommentScore,
   CommentStyled,
   IconReplyStyled,
   UserAvatar,
@@ -9,12 +8,10 @@ import {
   UserStyledDate,
   UserStyledName,
   UserStyledReply,
-  VoteButtonStyled,
 } from './comment.styled';
 import IconReply from '../../assets/icons/icon-reply.svg';
-import IconPlus from '../../assets/icons/icon-plus.svg';
-import IconMinus from '../../assets/icons/icon-minus.svg';
 import Reply from '../reply/reply';
+import ScoreCounter from '../scoreCounter/scoreCounter';
 
 interface CommentProps {
   id: number;
@@ -49,15 +46,7 @@ const Comment = (props: CommentProps) => {
     <>
       <CommentStyled>
         <div>
-          <CommentScore>
-            <VoteButtonStyled onClick={voteUp}>
-              <img src={IconPlus} alt="IconPlus" />
-            </VoteButtonStyled>
-            {vote}
-            <VoteButtonStyled onClick={voteDown}>
-              <img src={IconMinus} alt="IconMinus" />
-            </VoteButtonStyled>
-          </CommentScore>
+          <ScoreCounter voteUp={voteUp} voteDown={voteDown} vote={vote} />
         </div>
         <div>
           <UserStyled>

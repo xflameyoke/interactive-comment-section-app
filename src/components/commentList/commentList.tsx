@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comment/comment';
-import AddComment from '../newComment/addComment';
+import AddComment from '../addComment/addComment';
 import { CommentListStyled } from './commentList.styled';
+import Reply from '../reply/reply';
 
 interface Comment {
   id: number;
@@ -37,9 +38,11 @@ const CommentList = () => {
       />
     </div>
   ));
+
   return (
     <CommentListStyled>
       {mappedData}
+      <Reply />
       <AddComment />
     </CommentListStyled>
   );
