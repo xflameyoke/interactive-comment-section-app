@@ -12,19 +12,25 @@ const come = keyframes`
 `;
 
 export const ReplyStyled = styled.div`
-  margin: 10px 0 10px auto;
+  display: flex;
+  border-left: 2px solid ${({ theme }) => theme.colors.lightGray};
+  margin-left: 45px;
+  height: 120px;
+  animation-name: ${come};
+  animation-duration: 1s;
+  animation-iteration-count: ease-in;
+`;
+
+export const ReplyContent = styled.div`
+  margin-left: auto;
   padding-top: 20px;
   width: 90%;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
-  gap: 15px;
-  align-items: first-baseline;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   padding-top: 0px;
-  animation-name: ${come};
-  animation-duration: 1s;
-  animation-iteration-count: ease-in;
 `;
 
 export const ReplyButtonWrapper = styled.div`
@@ -51,9 +57,4 @@ export const ReplyAvatar = styled.img`
   margin: 20px 0 0 30px;
   width: 30px;
   height: 30px;
-`;
-
-export const ReplyLine = styled.div`
-  display: flex;
-  border: 1px solid ${({ theme }) => theme.colors.darkBlue};
 `;

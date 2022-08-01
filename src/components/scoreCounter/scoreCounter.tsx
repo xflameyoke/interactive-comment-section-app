@@ -4,12 +4,12 @@ import IconPlus from '../../assets/icons/icon-plus.svg';
 import IconMinus from '../../assets/icons/icon-minus.svg';
 
 interface Props {
-  voteUp: () => void;
-  voteDown: () => void;
-  vote: number;
+  voteUp?: () => void;
+  voteDown?: () => void;
+  vote?: number;
 }
 
-const scoreCounter: React.FC<Props> = (props) => (
+const ScoreCounter: React.FC<Props> = (props) => (
   <ScoreStyled>
     <ScoreButtonStyled onClick={props.voteUp}>
       <img src={IconPlus} alt="IconPlus" />
@@ -21,4 +21,4 @@ const scoreCounter: React.FC<Props> = (props) => (
   </ScoreStyled>
 );
 
-export default scoreCounter;
+export default ScoreCounter;
