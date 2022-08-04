@@ -11,37 +11,38 @@ const come = keyframes`
   }
 `;
 
-export const ReplyStyled = styled.div`
-  display: flex;
+export const ReplyWrapper = styled.div`
   border-left: 2px solid ${({ theme }) => theme.colors.lightGray};
   margin-left: 45px;
-  height: 120px;
+`;
+
+export const ReplyStyled = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 11fr;
+  grid-column-gap: 20px;
+  padding: 20px;
+  margin-left: 45px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 10px;
   animation-name: ${come};
   animation-duration: 1s;
   animation-iteration-count: ease-in;
 `;
 
-export const ReplyContent = styled.div`
-  margin-left: auto;
-  padding-top: 20px;
-  width: 90%;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.white};
+export const ReplyHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 0px;
+  gap: 10px;
+  margin-top: 10px;
 `;
 
-export const ReplyButtonWrapper = styled.div`
-  margin: 20px 40px 0 0;
+export const ReplyNameStyled = styled.div`
+  color: ${({ theme }) => theme.colors.darkBlue};
+  font-weight: bold;
 `;
 
-export const ReplyText = styled.div`
-  color: red;
-`;
-
-export const ReplyYou = styled.div`
+export const ReplyHeaderYou = styled.div`
   border-radius: 5px;
   height: 20px;
   width: 40px;
@@ -53,8 +54,38 @@ export const ReplyYou = styled.div`
   background-color: ${({ theme }) => theme.colors.moderateBlue};
 `;
 
-export const ReplyAvatar = styled.img`
-  margin: 20px 0 0 30px;
+export const ReplyStyledDelete = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.softRed};
+  font-weight: bold;
+  margin-left: auto;
+`;
+
+export const IconDeleteStyled = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+`;
+
+export const ReplyEditStyled = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.moderateBlue};
+  font-weight: bold;
+  margin-right: 10px;
+`;
+
+export const IconEditStyled = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+`;
+
+export const ReplyHeaderAvatar = styled.img`
   width: 30px;
   height: 30px;
+`;
+
+export const ReplyHeaderDate = styled.div`
+  color: ${({ theme }) => theme.colors.grayishBlue};
+  font-size: 12px;
 `;
