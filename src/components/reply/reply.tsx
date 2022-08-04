@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import {
-  ReplyAvatar,
-  ReplyButtonWrapper,
-  ReplyContent,
+  IconDeleteStyled,
+  IconEditStyled,
+  ReplyEditStyled,
+  ReplyHeader,
+  ReplyHeaderAvatar,
+  ReplyHeaderDate,
+  ReplyHeaderYou,
+  ReplyNameStyled,
   ReplyStyled,
-  ReplyText,
-  ReplyYou,
+  ReplyStyledDelete,
+  ReplyWrapper,
 } from './reply.styled';
-import ReplyButton from '../replyButton/replyButton';
 import Avatar from '../../assets/avatars/image-juliusomo.png';
 import ScoreCounter from '../scoreCounter/scoreCounter';
+import IconDelete from '../../assets/icons/icon-delete.svg';
+import IconEdit from '../../assets/icons/icon-edit.svg';
 
 const Reply = () => {
   const [initialScore, setInitialScore] = useState(0);
@@ -24,21 +30,34 @@ const Reply = () => {
 
   return (
     <>
-      <ReplyStyled>
-        <ReplyContent>
-          <ScoreCounter
-            voteUp={voteUp}
-            voteDown={voteDown}
-            vote={initialScore}
-          />
-          <ReplyAvatar src={Avatar} alt="Current User" />
-          <ReplyYou>you</ReplyYou>
-          <ReplyText />
-          <ReplyButtonWrapper>
-            <ReplyButton />
-          </ReplyButtonWrapper>
-        </ReplyContent>
-      </ReplyStyled>
+      <ReplyWrapper>
+        <ReplyStyled>
+          <div>
+            <ScoreCounter
+              voteUp={voteUp}
+              voteDown={voteDown}
+              vote={initialScore}
+            />
+          </div>
+          <div>
+            <ReplyHeader>
+              <ReplyHeaderAvatar src={Avatar} alt="Current User" />
+              <ReplyNameStyled>juliusomo</ReplyNameStyled>
+              <ReplyHeaderYou>you</ReplyHeaderYou>
+              <ReplyHeaderDate>2 days ago</ReplyHeaderDate>
+              <ReplyStyledDelete>
+                <IconDeleteStyled src={IconDelete} alt="Icon Delete" />
+                Delete
+              </ReplyStyledDelete>
+              <ReplyEditStyled>
+                <IconEditStyled src={IconEdit} alt="Icon Edit" />
+                Edit
+              </ReplyEditStyled>
+            </ReplyHeader>
+            <p>Random text</p>
+          </div>
+        </ReplyStyled>
+      </ReplyWrapper>
     </>
   );
 };
