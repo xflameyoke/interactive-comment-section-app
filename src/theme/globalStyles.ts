@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
   overflow-x: hidden;
   background: hsl(228, 33%, 97%);
   }
+
+  p {
+    font-size: 16px;
+  }
 `;
 
 export default GlobalStyle;

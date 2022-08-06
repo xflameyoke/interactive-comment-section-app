@@ -13,7 +13,7 @@ const come = keyframes`
 `;
 
 export const AddCommentStyled = styled.div`
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
   padding: 20px;
   display: flex;
   border-radius: 10px;

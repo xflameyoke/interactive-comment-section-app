@@ -10,25 +10,26 @@ import {
   UserStyledReply,
 } from './comment.styled';
 import IconReply from '../../assets/icons/icon-reply.svg';
-import Reply from '../reply/reply';
 import ScoreCounter from '../scoreCounter/scoreCounter';
+import AddComment from '../addComment/addComment';
+import Reply from '../reply/reply';
 
 interface CommentProps {
   id: number;
   content: string;
-  score: number;
-  createdAt: string;
   user: {
     image: {
       png: string;
     };
     username: string;
   };
+  score: number;
+  createdAt: string;
 }
 
 const Comment = (props: CommentProps) => {
   const [vote, setVote] = useState<number>(props.score);
-  const [reply, setReply] = useState(false);
+  const [replying, setReplying] = useState(false);
 
   const voteUp = () => {
     setVote((lastVote) => lastVote + 1);
@@ -39,7 +40,7 @@ const Comment = (props: CommentProps) => {
   };
 
   const replyHandler = () => {
-    setReply(!reply);
+    setReplying(!replying);
   };
 
   return (
@@ -61,7 +62,8 @@ const Comment = (props: CommentProps) => {
           <p>{props.content}</p>
         </div>
       </CommentStyled>
-      <CommentReply>{reply ? <Reply /> : ''}</CommentReply>
+      <Reply />
+      <CommentReply>{replying ? <AddComment /> : ''}</CommentReply>
     </>
   );
 };

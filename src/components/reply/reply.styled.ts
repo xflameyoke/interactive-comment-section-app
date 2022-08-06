@@ -13,7 +13,7 @@ const come = keyframes`
 
 export const ReplyWrapper = styled.div`
   border-left: 2px solid ${({ theme }) => theme.colors.lightGray};
-  margin-left: 45px;
+  margin: 10px 0 10px 45px;
 `;
 
 export const ReplyStyled = styled.div`
@@ -22,19 +22,19 @@ export const ReplyStyled = styled.div`
   grid-template-columns: 1fr 11fr;
   grid-column-gap: 20px;
   padding: 20px;
-  margin-left: 45px;
+  margin: 0 0 10px 35px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
   animation-name: ${come};
   animation-duration: 1s;
   animation-iteration-count: ease-in;
+  color: ${({ theme }) => theme.colors.grayishBlue};
 `;
 
 export const ReplyHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
 `;
 
 export const ReplyNameStyled = styled.div`
@@ -88,4 +88,30 @@ export const ReplyHeaderAvatar = styled.img`
 export const ReplyHeaderDate = styled.div`
   color: ${({ theme }) => theme.colors.grayishBlue};
   font-size: 12px;
+`;
+
+export const ReplyInputEdit = styled.div`
+  input {
+    width: 100%;
+    height: 70px;
+    margin: 5px;
+    border: 2px solid ${({ theme }) => theme.colors.lightGray};
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px 0 50px 15px;
+    font-size: 16px;
+
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.darkBlue};
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid ${({ theme }) => theme.colors.lightGray};
+    }
+  }
+`;
+
+export const ReplyButtonWrapper = styled.div`
+  margin-left: 80%;
 `;
