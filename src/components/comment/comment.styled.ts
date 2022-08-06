@@ -24,9 +24,7 @@ export const CommentStyled = styled.div`
   animation-iteration-count: ease-in;
 
   p {
-    width: 90%;
     color: ${({ theme }) => theme.colors.grayishBlue};
-    font-size: 12px;
   }
 
   input {

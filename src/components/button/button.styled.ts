@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ReplyButtonStyled = styled.button`
+export const ButtonStyled = styled.button`
   height: 50px;
   width: 110px;
   display: flex;

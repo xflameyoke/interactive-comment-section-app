@@ -6,7 +6,7 @@ import {
   AddCommentStyled,
 } from './addComment.styled';
 import Avatar from '../../assets/avatars/image-juliusomo.png';
-import SendButton from '../sendButton/sendButton';
+import Button from '../button/button';
 
 const AddComment = () => {
   const [comment, setComment] = useState('');
@@ -24,7 +24,8 @@ const AddComment = () => {
         onChange={commentDataHandler}
       />
       <AddCommentButtonWrapper>
-        <SendButton />
+        <Button button={'reply'} />
+        {comment}
       </AddCommentButtonWrapper>
     </AddCommentStyled>
   );
