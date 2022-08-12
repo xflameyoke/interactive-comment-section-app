@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Comment from '../comment/comment';
-import AddComment from '../addComment/addComment';
+import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
+import dataJSON from '../../data.json';
 
 interface Comment {
   id: number;
@@ -14,37 +15,27 @@ interface Comment {
   };
   score: number;
   createdAt: string;
-  replies: [
-    {
-      id: number;
-      content: string;
-      createdAt: string;
-      score: number;
-      replyingTo: string;
-      user: {
-        image: {
-          png: string;
-        };
+  replies: {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    replyingTo: string;
+    user: {
+      image: {
+        png: string;
       };
       username: string;
-    }
-  ];
+    };
+  }[];
 }
 
 const CommentList = () => {
-  const [commentData, setCommentData] = useState<Array<Comment>>([]);
+  const [data, setData] = useState(dataJSON);
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('./data.json');
-      const data = await response.json();
-      setCommentData(data.comments);
-    };
+  const dataREPLY = data.comments[1].replies;
 
-    getData();
-  }, []);
-
-  const mappedData = commentData.map(
+  const mappedData = data.comments.map(
     ({ content, id, user, score, createdAt }) => (
       <div key={id}>
         <Comment
@@ -61,7 +52,7 @@ const CommentList = () => {
   return (
     <CommentListStyled>
       {mappedData}
-      <AddComment />
+      <NewComment />
     </CommentListStyled>
   );
 };
