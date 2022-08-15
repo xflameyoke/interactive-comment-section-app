@@ -24,8 +24,7 @@ const NewComment = () => {
         onChange={commentDataHandler}
       />
       <NewCommentButtonWrapper>
-        <Button button={'reply'} />
-        {comment}
+        <Button button={'ADD'} />
       </NewCommentButtonWrapper>
     </NewCommentStyled>
   );

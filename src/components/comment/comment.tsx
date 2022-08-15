@@ -11,7 +11,7 @@ import {
 } from './comment.styled';
 import IconReply from '../../assets/icons/icon-reply.svg';
 import ScoreCounter from '../scoreCounter/scoreCounter';
-import AddReply from '../addReply/addReply';
+import NewComment from '../newComment/newComment';
 
 interface CommentProps {
   id: number;
@@ -76,7 +76,7 @@ const Comment = (props: CommentProps) => {
           <p>{props.content}</p>
         </div>
       </CommentStyled>
-      <CommentReply>{replying ? <AddReply /> : ''}</CommentReply>
+      <CommentReply>{replying ? <NewComment /> : ''}</CommentReply>
     </>
   );
 };

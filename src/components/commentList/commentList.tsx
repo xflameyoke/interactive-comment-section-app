@@ -3,6 +3,7 @@ import Comment from '../comment/comment';
 import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
 import dataJSON from '../../data.json';
+import Reply from '../reply/reply';
 
 interface Comment {
   id: number;
@@ -33,25 +34,40 @@ interface Comment {
 const CommentList = () => {
   const [data, setData] = useState(dataJSON);
 
-  const dataREPLY = data.comments[1].replies;
-
-  const mappedData = data.comments.map(
-    ({ content, id, user, score, createdAt }) => (
-      <div key={id}>
+  const comments = data.comments.map((comment) => {
+    return (
+      <>
         <Comment
-          content={content}
-          id={id}
-          user={user}
-          score={score}
-          createdAt={createdAt}
+          id={comment.id}
+          content={comment.content}
+          user={comment.user}
+          score={comment.score}
+          createdAt={comment.createdAt}
         />
-      </div>
-    )
-  );
-
+        {comment.replies.length >= 1 ? (
+          <>
+            {comment.replies.map((reply) => {
+              return (
+                <>
+                  <Reply
+                    score={reply.score}
+                    user={reply.user}
+                    createdAt={reply.createdAt}
+                    content={reply.content}
+                  />
+                </>
+              );
+            })}
+          </>
+        ) : (
+          ''
+        )}
+      </>
+    );
+  });
   return (
     <CommentListStyled>
-      {mappedData}
+      {comments}
       <NewComment />
     </CommentListStyled>
   );
