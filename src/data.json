@@ -40,7 +40,7 @@
           "replyingTo": "maxblagun",
           "user": {
             "image": {
-              "png": "./images/avatars/image-ramsesmiron.png"
+              "png": "./avatars/image-ramsesmiron.png"
             },
             "username": "ramsesmiron"
           }
@@ -53,7 +53,7 @@
           "replyingTo": "ramsesmiron",
           "user": {
             "image": {
-              "png": "./images/avatars/image-juliusomo.png"
+              "png": "./avatars/image-juliusomo.png"
             },
             "username": "juliusomo"
           }

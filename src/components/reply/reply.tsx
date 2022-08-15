@@ -7,22 +7,32 @@ import {
   ReplyHeader,
   ReplyHeaderAvatar,
   ReplyHeaderDate,
-  ReplyHeaderYou,
   ReplyInputEdit,
   ReplyNameStyled,
   ReplyStyled,
   ReplyStyledDelete,
   ReplyWrapper,
 } from './reply.styled';
-import Avatar from '../../assets/avatars/image-juliusomo.png';
 import ScoreCounter from '../scoreCounter/scoreCounter';
 import IconDelete from '../../assets/icons/icon-delete.svg';
 import IconEdit from '../../assets/icons/icon-edit.svg';
 import Button from '../button/button';
 
-const Reply = () => {
-  const [initialScore, setInitialScore] = useState(0);
-  const [reply, setReply] = useState('');
+interface ReplyProps {
+  score: number;
+  content: string;
+  createdAt: string;
+  user: {
+    image: {
+      png: string;
+    };
+    username: string;
+  };
+}
+
+const Reply = (props: ReplyProps) => {
+  const [initialScore, setInitialScore] = useState(props.score);
+  const [reply, setReply] = useState(props.content);
   const [editing, setEditing] = useState(true);
 
   const voteUp = () => {
@@ -53,21 +63,31 @@ const Reply = () => {
           </div>
           <div>
             <ReplyHeader>
-              <ReplyHeaderAvatar src={Avatar} alt="Current User" />
-              <ReplyNameStyled>juliusomo</ReplyNameStyled>
-              <ReplyHeaderYou>you</ReplyHeaderYou>
-              <ReplyHeaderDate>2 days ago</ReplyHeaderDate>
-              <ReplyStyledDelete>
-                <IconDeleteStyled src={IconDelete} alt="Icon Delete" />
-                Delete
-              </ReplyStyledDelete>
-              <ReplyEditStyled onClick={changeEdit}>
-                <IconEditStyled src={IconEdit} alt="Icon Edit" />
-                Edit
-              </ReplyEditStyled>
+              <ReplyHeaderAvatar
+                src={props.user.image.png}
+                alt="Current User"
+              />
+              <ReplyNameStyled>{props.user.username}</ReplyNameStyled>
+              <ReplyHeaderDate>{props.createdAt}</ReplyHeaderDate>
+              {props.user.username === 'juliusomo' ? (
+                <ReplyStyledDelete>
+                  <IconDeleteStyled src={IconDelete} alt="Icon Delete" />
+                  Delete
+                </ReplyStyledDelete>
+              ) : (
+                ''
+              )}
+              {props.user.username === 'juliusomo' ? (
+                <ReplyEditStyled onClick={changeEdit}>
+                  <IconEditStyled src={IconEdit} alt="Icon Edit" />
+                  Edit
+                </ReplyEditStyled>
+              ) : (
+                ''
+              )}
             </ReplyHeader>
             {editing ? (
-              <p>{reply}</p>
+              <p>{props.content}</p>
             ) : (
               <ReplyInputEdit>
                 <input

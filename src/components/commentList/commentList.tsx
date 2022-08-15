@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Comment from '../comment/comment';
-import AddComment from '../addComment/addComment';
+import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
+import dataJSON from '../../data.json';
+import Reply from '../reply/reply';
 
 interface Comment {
   id: number;
@@ -14,54 +16,59 @@ interface Comment {
   };
   score: number;
   createdAt: string;
-  replies: [
-    {
-      id: number;
-      content: string;
-      createdAt: string;
-      score: number;
-      replyingTo: string;
-      user: {
-        image: {
-          png: string;
-        };
+  replies: {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    replyingTo: string;
+    user: {
+      image: {
+        png: string;
       };
       username: string;
-    }
-  ];
+    };
+  }[];
 }
 
 const CommentList = () => {
-  const [commentData, setCommentData] = useState<Array<Comment>>([]);
+  const [data, setData] = useState(dataJSON);
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('./data.json');
-      const data = await response.json();
-      setCommentData(data.comments);
-    };
-
-    getData();
-  }, []);
-
-  const mappedData = commentData.map(
-    ({ content, id, user, score, createdAt }) => (
-      <div key={id}>
+  const comments = data.comments.map((comment) => {
+    return (
+      <>
         <Comment
-          content={content}
-          id={id}
-          user={user}
-          score={score}
-          createdAt={createdAt}
+          id={comment.id}
+          content={comment.content}
+          user={comment.user}
+          score={comment.score}
+          createdAt={comment.createdAt}
         />
-      </div>
-    )
-  );
-
+        {comment.replies.length >= 1 ? (
+          <>
+            {comment.replies.map((reply) => {
+              return (
+                <>
+                  <Reply
+                    score={reply.score}
+                    user={reply.user}
+                    createdAt={reply.createdAt}
+                    content={reply.content}
+                  />
+                </>
+              );
+            })}
+          </>
+        ) : (
+          ''
+        )}
+      </>
+    );
+  });
   return (
     <CommentListStyled>
-      {mappedData}
-      <AddComment />
+      {comments}
+      <NewComment />
     </CommentListStyled>
   );
 };

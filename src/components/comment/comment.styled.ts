@@ -26,12 +26,6 @@ export const CommentStyled = styled.div`
   p {
     color: ${({ theme }) => theme.colors.grayishBlue};
   }
-
-  input {
-    width: 90%;
-    height: 50px;
-    border: none;
-  }
 `;
 
 export const UserStyled = styled.div`

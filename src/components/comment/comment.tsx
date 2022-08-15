@@ -11,8 +11,7 @@ import {
 } from './comment.styled';
 import IconReply from '../../assets/icons/icon-reply.svg';
 import ScoreCounter from '../scoreCounter/scoreCounter';
-import AddComment from '../addComment/addComment';
-import Reply from '../reply/reply';
+import NewComment from '../newComment/newComment';
 
 interface CommentProps {
   id: number;
@@ -25,6 +24,21 @@ interface CommentProps {
   };
   score: number;
   createdAt: string;
+  replies?: [
+    {
+      id: number;
+      content: string;
+      createdAt: string;
+      score: number;
+      replyingTo: string;
+      user: {
+        image: {
+          png: string;
+        };
+      };
+      username: string;
+    }
+  ];
 }
 
 const Comment = (props: CommentProps) => {
@@ -62,8 +76,7 @@ const Comment = (props: CommentProps) => {
           <p>{props.content}</p>
         </div>
       </CommentStyled>
-      <Reply />
-      <CommentReply>{replying ? <AddComment /> : ''}</CommentReply>
+      <CommentReply>{replying ? <NewComment /> : ''}</CommentReply>
     </>
   );
 };
