@@ -32,7 +32,7 @@ interface ReplyProps {
 
 const Reply = (props: ReplyProps) => {
   const [initialScore, setInitialScore] = useState(props.score);
-  const [reply, setReply] = useState('');
+  const [reply, setReply] = useState(props.content);
   const [editing, setEditing] = useState(true);
 
   const voteUp = () => {
@@ -69,14 +69,22 @@ const Reply = (props: ReplyProps) => {
               />
               <ReplyNameStyled>{props.user.username}</ReplyNameStyled>
               <ReplyHeaderDate>{props.createdAt}</ReplyHeaderDate>
-              <ReplyStyledDelete>
-                <IconDeleteStyled src={IconDelete} alt="Icon Delete" />
-                Delete
-              </ReplyStyledDelete>
-              <ReplyEditStyled onClick={changeEdit}>
-                <IconEditStyled src={IconEdit} alt="Icon Edit" />
-                Edit
-              </ReplyEditStyled>
+              {props.user.username === 'juliusomo' ? (
+                <ReplyStyledDelete>
+                  <IconDeleteStyled src={IconDelete} alt="Icon Delete" />
+                  Delete
+                </ReplyStyledDelete>
+              ) : (
+                ''
+              )}
+              {props.user.username === 'juliusomo' ? (
+                <ReplyEditStyled onClick={changeEdit}>
+                  <IconEditStyled src={IconEdit} alt="Icon Edit" />
+                  Edit
+                </ReplyEditStyled>
+              ) : (
+                ''
+              )}
             </ReplyHeader>
             {editing ? (
               <p>{props.content}</p>
