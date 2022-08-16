@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import {
   NewCommentAvatar,
   NewCommentButtonWrapper,
@@ -10,13 +10,20 @@ import Button from '../button/button';
 
 interface AddNewComment {
   addNewComment?: () => void;
+  newCommentText?: string;
+  newCommentHandler?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const NewComment = (props: AddNewComment) => {
   return (
     <NewCommentStyled>
       <NewCommentAvatar src={Avatar} alt="User Avatar" />
-      <NewCommentInput type="text" placeholder="New a comment" />
+      <NewCommentInput
+        type="text"
+        placeholder="Add a comment"
+        onChange={props.newCommentHandler}
+        value={props.newCommentText}
+      />
       <NewCommentButtonWrapper>
         <Button button={'ADD'} onClick={props.addNewComment} />
       </NewCommentButtonWrapper>

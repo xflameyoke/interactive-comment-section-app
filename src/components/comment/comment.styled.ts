@@ -68,3 +68,28 @@ export const IconReplyStyled = styled.img`
 export const CommentReply = styled.div`
   margin: 10px auto 0 auto;
 `;
+
+export const CommentStyledDelete = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.softRed};
+  font-weight: bold;
+  margin: 0 10px 0 auto;
+`;
+
+export const CommentIconDeleteStyled = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+`;
+
+export const CommentEditStyled = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.moderateBlue};
+  font-weight: bold;
+`;
+
+export const CommentIconEditStyled = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+`;
