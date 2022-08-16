@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {
+  CommentEditStyled,
+  CommentIconDeleteStyled,
+  CommentIconEditStyled,
   CommentReply,
   CommentStyled,
+  CommentStyledDelete,
   IconReplyStyled,
   UserAvatar,
   UserStyled,
@@ -12,6 +16,8 @@ import {
 import IconReply from '../../assets/icons/icon-reply.svg';
 import ScoreCounter from '../scoreCounter/scoreCounter';
 import NewComment from '../newComment/newComment';
+import IconDelete from '../../assets/icons/icon-delete.svg';
+import IconEdit from '../../assets/icons/icon-edit.svg';
 
 interface CommentProps {
   id: number;
@@ -59,7 +65,7 @@ const Comment = (props: CommentProps) => {
 
   return (
     <>
-      <CommentStyled>
+      <CommentStyled key={props.id}>
         <div>
           <ScoreCounter voteUp={voteUp} voteDown={voteDown} vote={vote} />
         </div>
@@ -68,10 +74,23 @@ const Comment = (props: CommentProps) => {
             <UserAvatar src={props.user.image.png} alt="UserAvatar" />
             <UserStyledName>{props.user.username}</UserStyledName>
             <UserStyledDate>{props.createdAt}</UserStyledDate>
-            <UserStyledReply onClick={replyHandler}>
-              <IconReplyStyled src={IconReply} alt="IconReply" />
-              Reply
-            </UserStyledReply>
+            {props.user.username === 'juliusomo' ? (
+              <>
+                <CommentStyledDelete>
+                  <CommentIconDeleteStyled src={IconDelete} alt="IconDelete" />
+                  Delete
+                </CommentStyledDelete>
+                <CommentEditStyled>
+                  <CommentIconEditStyled src={IconEdit} alt="Icon Edit" />
+                  Edit
+                </CommentEditStyled>
+              </>
+            ) : (
+              <UserStyledReply onClick={replyHandler}>
+                <IconReplyStyled src={IconReply} alt="IconReply" />
+                Reply
+              </UserStyledReply>
+            )}
           </UserStyled>
           <p>{props.content}</p>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Comment from '../comment/comment';
 import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
@@ -33,6 +33,38 @@ interface Comment {
 
 const CommentList = () => {
   const [data, setData] = useState(dataJSON);
+  const [commentText, setCommentText] = useState('');
+
+  const addCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setCommentText(e.target.value);
+  };
+
+  const randomId = Math.floor(Math.random() * 100) + 1;
+  const time = new Date().toString().split(' ');
+  const actuallDate = `${time[2]}` + ' ' + `${time[1]}` + ' ' + `${time[3]}`;
+
+  const commentTest = {
+    id: randomId,
+    content: commentText,
+    createdAt: actuallDate,
+    score: 0,
+    user: {
+      image: {
+        png: './avatars/image-juliusomo.png',
+      },
+      username: 'juliusomo',
+    },
+    replies: [],
+  };
+
+  const addNewComment = () => {
+    setData((prevData) => {
+      return {
+        ...prevData,
+        comments: [...prevData.comments, commentTest],
+      };
+    });
+  };
 
   const comments = data.comments.map((comment) => {
     return (
@@ -68,7 +100,11 @@ const CommentList = () => {
   return (
     <CommentListStyled>
       {comments}
-      <NewComment />
+      <NewComment
+        addNewComment={addNewComment}
+        newCommentText={commentText}
+        newCommentHandler={addCommentHandler}
+      />
     </CommentListStyled>
   );
 };
