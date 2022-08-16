@@ -34,6 +34,29 @@ interface Comment {
 const CommentList = () => {
   const [data, setData] = useState(dataJSON);
 
+  const commentTest = {
+    id: 12,
+    content: 'Test comment',
+    createdAt: '2 days ago',
+    score: 11,
+    user: {
+      image: {
+        png: './avatars/image-amyrobson.png',
+      },
+      username: 'amyrobson',
+    },
+    replies: [],
+  };
+
+  const addNewComment = () => {
+    setData((prevData) => {
+      return {
+        ...prevData,
+        comments: [...prevData.comments, commentTest],
+      };
+    });
+  };
+
   const comments = data.comments.map((comment) => {
     return (
       <>
@@ -68,7 +91,7 @@ const CommentList = () => {
   return (
     <CommentListStyled>
       {comments}
-      <NewComment />
+      <NewComment addNewComment={addNewComment} />
     </CommentListStyled>
   );
 };

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import {
   NewCommentAvatar,
   NewCommentButtonWrapper,
@@ -8,23 +8,17 @@ import {
 import Avatar from '../../assets/avatars/image-juliusomo.png';
 import Button from '../button/button';
 
-const NewComment = () => {
-  const [comment, setComment] = useState('');
+interface AddNewComment {
+  addNewComment?: () => void;
+}
 
-  const commentDataHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setComment(e.target.value);
-  };
-
+const NewComment = (props: AddNewComment) => {
   return (
     <NewCommentStyled>
       <NewCommentAvatar src={Avatar} alt="User Avatar" />
-      <NewCommentInput
-        type="text"
-        placeholder="New a comment"
-        onChange={commentDataHandler}
-      />
+      <NewCommentInput type="text" placeholder="New a comment" />
       <NewCommentButtonWrapper>
-        <Button button={'ADD'} />
+        <Button button={'ADD'} onClick={props.addNewComment} />
       </NewCommentButtonWrapper>
     </NewCommentStyled>
   );
