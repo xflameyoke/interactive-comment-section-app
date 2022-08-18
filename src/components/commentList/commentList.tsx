@@ -43,7 +43,7 @@ const CommentList = () => {
   const time = new Date().toString().split(' ');
   const actuallDate = `${time[2]}` + ' ' + `${time[1]}` + ' ' + `${time[3]}`;
 
-  const commentTest = {
+  const newComment = {
     id: randomId,
     content: commentText,
     createdAt: actuallDate,
@@ -61,7 +61,7 @@ const CommentList = () => {
     setData((prevData) => {
       return {
         ...prevData,
-        comments: [...prevData.comments, commentTest],
+        comments: [...prevData.comments, newComment],
       };
     });
   };

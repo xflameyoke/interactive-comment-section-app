@@ -12,6 +12,7 @@ interface AddNewComment {
   addNewComment?: () => void;
   newCommentText?: string;
   newCommentHandler?: (e: ChangeEvent<HTMLInputElement>) => void;
+  isReply?: boolean;
 }
 
 const NewComment = (props: AddNewComment) => {
