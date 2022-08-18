@@ -101,8 +101,7 @@ export const ReplyInputEdit = styled.div`
     padding: 10px 0 50px 15px;
     font-size: 16px;
     overflow-y: hidden;
-    resize: none;
-    font-family: 'Rubik', sans-serif;
+    color: ${({ theme }) => theme.colors.grayishBlue};
 
     ::placeholder {
       color: ${({ theme }) => theme.colors.darkBlue};

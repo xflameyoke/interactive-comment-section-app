@@ -35,7 +35,7 @@ const CommentList = () => {
   const [data, setData] = useState(dataJSON);
   const [commentText, setCommentText] = useState('');
 
-  const addCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const addCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
   };
 

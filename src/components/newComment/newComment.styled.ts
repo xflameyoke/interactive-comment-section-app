@@ -31,7 +31,7 @@ export const NewCommentAvatar = styled.img`
   height: 35px;
 `;
 
-export const NewCommentInput = styled.input`
+export const NewCommentInput = styled.textarea`
   width: 70%;
   height: 100px;
   border: 2px solid ${({ theme }) => theme.colors.lightGray};
@@ -39,6 +39,7 @@ export const NewCommentInput = styled.input`
   box-sizing: border-box;
   padding: 10px 0 50px 15px;
   font-size: 16px;
+  color: ${({ theme }) => theme.colors.grayishBlue};
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.darkBlue};

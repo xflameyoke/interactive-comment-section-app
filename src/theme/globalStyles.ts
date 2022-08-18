@@ -12,6 +12,11 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: 16px;
   }
+
+  textarea {
+    font-family: 'Ruby', sans-serif;
+    resize: none;
+  }
 `;
 
 export default GlobalStyle;
