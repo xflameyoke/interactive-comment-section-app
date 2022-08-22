@@ -18,6 +18,7 @@ import ScoreCounter from '../scoreCounter/scoreCounter';
 import NewComment from '../newComment/newComment';
 import IconDelete from '../../assets/icons/icon-delete.svg';
 import IconEdit from '../../assets/icons/icon-edit.svg';
+import Button from '../button/button';
 
 interface CommentProps {
   id: number;
@@ -45,11 +46,15 @@ interface CommentProps {
       username: string;
     }
   ];
+  editCommentText?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  editComment: () => void;
+  editText: string;
 }
 
 const Comment = (props: CommentProps) => {
   const [vote, setVote] = useState<number>(props.score);
   const [replying, setReplying] = useState(false);
+  const [edit, setEdit] = useState(!false);
 
   const voteUp = () => {
     setVote((lastVote) => lastVote + 1);
@@ -63,16 +68,22 @@ const Comment = (props: CommentProps) => {
     setReplying(!replying);
   };
 
+  const editHandler = () => {
+    setEdit(!edit);
+  };
+
   return (
     <>
-      <CommentStyled key={props.id}>
+      <CommentStyled>
         <div>
           <ScoreCounter voteUp={voteUp} voteDown={voteDown} vote={vote} />
         </div>
         <div>
           <UserStyled>
             <UserAvatar src={props.user.image.png} alt="UserAvatar" />
-            <UserStyledName>{props.user.username}</UserStyledName>
+            <UserStyledName>
+              {props.user.username} {props.id}
+            </UserStyledName>
             <UserStyledDate>{props.createdAt}</UserStyledDate>
             {props.user.username === 'juliusomo' ? (
               <>
@@ -80,7 +91,7 @@ const Comment = (props: CommentProps) => {
                   <CommentIconDeleteStyled src={IconDelete} alt="IconDelete" />
                   Delete
                 </CommentStyledDelete>
-                <CommentEditStyled>
+                <CommentEditStyled onClick={editHandler}>
                   <CommentIconEditStyled src={IconEdit} alt="Icon Edit" />
                   Edit
                 </CommentEditStyled>
@@ -92,7 +103,20 @@ const Comment = (props: CommentProps) => {
               </UserStyledReply>
             )}
           </UserStyled>
-          <p>{props.content}</p>
+          {edit ? (
+            <p>{props.content}</p>
+          ) : (
+            <>
+              <textarea
+                rows={4}
+                cols={62}
+                placeholder={props.editText}
+                value={props.editText}
+                onChange={props.editCommentText}
+              ></textarea>
+              <Button onClick={props.editComment} button={'UPDATE'} />
+            </>
+          )}
         </div>
       </CommentStyled>
       <CommentReply>{replying ? <NewComment /> : ''}</CommentReply>

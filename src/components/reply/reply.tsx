@@ -33,6 +33,7 @@ interface ReplyProps {
     };
     username: string;
   };
+  id: number;
 }
 
 const Reply = (props: ReplyProps): JSX.Element => {
