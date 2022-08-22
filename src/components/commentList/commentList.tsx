@@ -35,15 +35,15 @@ const CommentList = () => {
   const [data, setData] = useState(dataJSON);
   const [commentText, setCommentText] = useState('');
 
-  const addCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const addCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
   };
 
-  const randomId = Math.floor(Math.random() * 100) + 1;
+  const randomId = Math.floor(Math.random() * 1) + 5;
   const time = new Date().toString().split(' ');
   const actuallDate = `${time[2]}` + ' ' + `${time[1]}` + ' ' + `${time[3]}`;
 
-  const commentTest = {
+  const newComment = {
     id: randomId,
     content: commentText,
     createdAt: actuallDate,
@@ -61,40 +61,69 @@ const CommentList = () => {
     setData((prevData) => {
       return {
         ...prevData,
-        comments: [...prevData.comments, commentTest],
+        comments: [...prevData.comments, newComment],
+      };
+    });
+  };
+
+  const editCommentUpdate = () => {
+    setData((prevData) => {
+      return {
+        ...prevData,
+        comments: [
+          ...prevData.comments.map((comment) => {
+            if (comment.id === comment.id) {
+              return {
+                ...comment,
+                content: commentText,
+              };
+            } else {
+              return {
+                ...comment,
+              };
+            }
+          }),
+        ],
       };
     });
   };
 
   const comments = data.comments.map((comment) => {
     return (
-      <>
+      <React.Fragment key={comment.id}>
         <Comment
+          key={comment.id}
           id={comment.id}
           content={comment.content}
           user={comment.user}
           score={comment.score}
           createdAt={comment.createdAt}
+          editComment={editCommentUpdate}
+          editCommentText={addCommentHandler}
+          editText={commentText}
         />
+
         {comment.replies.length >= 1 ? (
           <>
             {comment.replies.map((reply) => {
               return (
-                <>
+                <React.Fragment key={reply.id}>
                   <Reply
+                    key={reply.id}
+                    id={reply.id}
                     score={reply.score}
                     user={reply.user}
                     createdAt={reply.createdAt}
                     content={reply.content}
                   />
-                </>
+                </React.Fragment>
               );
             })}
           </>
         ) : (
           ''
         )}
-      </>
+      </React.Fragment>
     );
   });
   return (

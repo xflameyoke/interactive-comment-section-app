@@ -11,7 +11,8 @@ import Button from '../button/button';
 interface AddNewComment {
   addNewComment?: () => void;
   newCommentText?: string;
-  newCommentHandler?: (e: ChangeEvent<HTMLInputElement>) => void;
+  newCommentHandler?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isReply?: boolean;
 }
 
 const NewComment = (props: AddNewComment) => {
@@ -19,7 +20,6 @@ const NewComment = (props: AddNewComment) => {
     <NewCommentStyled>
       <NewCommentAvatar src={Avatar} alt="User Avatar" />
       <NewCommentInput
-        type="text"
         placeholder="Add a comment"
         onChange={props.newCommentHandler}
         value={props.newCommentText}

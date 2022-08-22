@@ -91,15 +91,17 @@ export const ReplyHeaderDate = styled.div`
 `;
 
 export const ReplyInputEdit = styled.div`
-  input {
+  textarea {
     width: 100%;
     height: 70px;
-    margin: 5px;
+    margin: 5px 0 5px 0;
     border: 2px solid ${({ theme }) => theme.colors.lightGray};
     border-radius: 10px;
     box-sizing: border-box;
     padding: 10px 0 50px 15px;
     font-size: 16px;
+    overflow-y: hidden;
+    color: ${({ theme }) => theme.colors.grayishBlue};
 
     ::placeholder {
       color: ${({ theme }) => theme.colors.darkBlue};
@@ -114,4 +116,21 @@ export const ReplyInputEdit = styled.div`
 
 export const ReplyButtonWrapper = styled.div`
   margin-left: 80%;
+`;
+
+export const ReplyReplyStyled = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.moderateBlue};
+  font-weight: bold;
+  margin-left: auto;
+`;
+
+export const IconReplyStyled = styled.img`
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+`;
+
+export const ReplyReply = styled.div`
+  margin: 10px auto 0 auto;
 `;

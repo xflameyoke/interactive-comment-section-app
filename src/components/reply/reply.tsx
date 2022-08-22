@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import {
   IconDeleteStyled,
   IconEditStyled,
+  IconReplyStyled,
   ReplyButtonWrapper,
   ReplyEditStyled,
   ReplyHeader,
@@ -9,6 +10,8 @@ import {
   ReplyHeaderDate,
   ReplyInputEdit,
   ReplyNameStyled,
+  ReplyReply,
+  ReplyReplyStyled,
   ReplyStyled,
   ReplyStyledDelete,
   ReplyWrapper,
@@ -16,7 +19,9 @@ import {
 import ScoreCounter from '../scoreCounter/scoreCounter';
 import IconDelete from '../../assets/icons/icon-delete.svg';
 import IconEdit from '../../assets/icons/icon-edit.svg';
+import IconReply from '../../assets/icons/icon-reply.svg';
 import Button from '../button/button';
+import NewComment from '../newComment/newComment';
 
 interface ReplyProps {
   score: number;
@@ -28,11 +33,13 @@ interface ReplyProps {
     };
     username: string;
   };
+  id: number;
 }
 
-const Reply = (props: ReplyProps) => {
+const Reply = (props: ReplyProps): JSX.Element => {
   const [initialScore, setInitialScore] = useState(props.score);
   const [reply, setReply] = useState(props.content);
+  const [replying, setReplying] = useState(false);
   const [editing, setEditing] = useState(true);
 
   const voteUp = () => {
@@ -46,8 +53,14 @@ const Reply = (props: ReplyProps) => {
   const changeEdit = () => {
     setEditing(!editing);
   };
-  const editChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const editChangeHandler = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
     setReply(e.target.value);
+  };
+
+  const replyingHandler = () => {
+    setReplying(!replying);
   };
 
   return (
@@ -83,18 +96,25 @@ const Reply = (props: ReplyProps) => {
                   Edit
                 </ReplyEditStyled>
               ) : (
-                ''
+                <ReplyReplyStyled onClick={replyingHandler}>
+                  <IconReplyStyled src={IconReply} alt="Reply" />
+                  Reply
+                </ReplyReplyStyled>
               )}
             </ReplyHeader>
             {editing ? (
               <p>{props.content}</p>
             ) : (
               <ReplyInputEdit>
-                <input
-                  onChange={editChangeHandler}
-                  value={reply}
+                <textarea
+                  rows={4}
+                  cols={62}
                   placeholder={reply}
-                />
+                  value={reply}
+                  onChange={editChangeHandler}
+                >
+                  {reply}
+                </textarea>
                 <ReplyButtonWrapper>
                   <Button button={'UPDATE'} onClick={changeEdit} />
                 </ReplyButtonWrapper>
@@ -103,6 +123,7 @@ const Reply = (props: ReplyProps) => {
           </div>
         </ReplyStyled>
       </ReplyWrapper>
+      <ReplyReply>{replying ? <NewComment isReply={false} /> : ''}</ReplyReply>
     </>
   );
 };

@@ -6,10 +6,16 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   overflow-x: hidden;
   background: hsl(228, 33%, 97%);
+  font-family: 'Rubik', sans-serif;
   }
 
   p {
     font-size: 16px;
+  }
+
+  textarea {
+    font-family: 'Ruby', sans-serif;
+    resize: none;
   }
 `;
 
