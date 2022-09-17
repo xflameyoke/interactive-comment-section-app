@@ -47,7 +47,7 @@ interface CommentProps {
     }
   ];
   editCommentText?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  editComment: () => void;
+  editComment?: () => void;
   editText: string;
 }
 

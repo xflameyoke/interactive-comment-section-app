@@ -72,7 +72,7 @@ const CommentList = () => {
         ...prevData,
         comments: [
           ...prevData.comments.map((comment) => {
-            if (comment.id === comment.id) {
+            if (comment.id === randomId) {
               return {
                 ...comment,
                 content: commentText,
