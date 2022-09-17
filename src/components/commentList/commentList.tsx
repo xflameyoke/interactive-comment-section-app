@@ -39,7 +39,7 @@ const CommentList = () => {
     setCommentText(e.target.value);
   };
 
-  const randomId = Math.floor(Math.random() * 1) + 5;
+  const randomId = Math.floor(Math.random() * 10) + 5;
   const time = new Date().toString().split(' ');
   const actuallDate = `${time[2]}` + ' ' + `${time[1]}` + ' ' + `${time[3]}`;
 
