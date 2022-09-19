@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  CommentEditInput,
   CommentEditStyled,
   CommentIconDeleteStyled,
   CommentIconEditStyled,
@@ -107,14 +108,20 @@ const Comment = (props: CommentProps) => {
             <p>{props.content}</p>
           ) : (
             <>
-              <textarea
-                rows={4}
-                cols={62}
+              <CommentEditInput
                 placeholder={props.editText}
                 value={props.editText}
                 onChange={props.editCommentText}
-              ></textarea>
-              <Button onClick={props.editComment} button={'UPDATE'} />
+              ></CommentEditInput>
+              <Button
+                onClick={() => {
+                  {
+                    props.editComment;
+                  }
+                  editHandler();
+                }}
+                button={'UPDATE'}
+              />
             </>
           )}
         </div>
