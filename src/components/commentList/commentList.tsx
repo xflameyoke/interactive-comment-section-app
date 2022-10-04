@@ -34,9 +34,14 @@ interface Comment {
 const CommentList = () => {
   const [data, setData] = useState(dataJSON);
   const [commentText, setCommentText] = useState('');
+  const [editText, setEditText] = useState('');
 
   const addCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
+  };
+
+  const setEditTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setEditText(e.target.value);
   };
 
   const randomId = Math.floor(Math.random() * 10) + 5;
@@ -45,7 +50,8 @@ const CommentList = () => {
 
   const newComment = {
     id: randomId,
-    content: commentText,
+    key: randomId,
+    content: editText,
     createdAt: actuallDate,
     score: 0,
     user: {
@@ -64,18 +70,19 @@ const CommentList = () => {
         comments: [...prevData.comments, newComment],
       };
     });
+    console.log(comments);
   };
 
-  const editCommentUpdate = () => {
+  const editCommentUpdate = (id: number) => {
     setData((prevData) => {
       return {
         ...prevData,
         comments: [
           ...prevData.comments.map((comment) => {
-            if (comment.id === randomId) {
+            if (comment.id === id) {
               return {
                 ...comment,
-                content: commentText,
+                content: editText,
               };
             } else {
               return {
@@ -98,9 +105,9 @@ const CommentList = () => {
           user={comment.user}
           score={comment.score}
           createdAt={comment.createdAt}
+          editCommentText={setEditTextHandler}
           editComment={editCommentUpdate}
-          editCommentText={addCommentHandler}
-          editText={commentText}
+          editText={editText}
         />
 
         {comment.replies.length >= 1 ? (
