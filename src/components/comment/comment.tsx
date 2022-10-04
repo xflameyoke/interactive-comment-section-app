@@ -113,15 +113,7 @@ const Comment = (props: CommentProps) => {
                 value={props.editText}
                 onChange={props.editCommentText}
               ></CommentEditInput>
-              <Button
-                onClick={() => {
-                  {
-                    props.editComment;
-                  }
-                  editHandler();
-                }}
-                button={'UPDATE'}
-              />
+              <Button onClick={() => props.editComment} button={'UPDATE'} />
             </>
           )}
         </div>
