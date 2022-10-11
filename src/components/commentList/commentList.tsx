@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Comment from '../comment/comment';
 import NewComment from '../newComment/newComment';
 import { CommentListStyled } from './commentList.styled';
@@ -35,6 +35,7 @@ const CommentList = () => {
   const [data, setData] = useState(dataJSON);
   const [commentText, setCommentText] = useState('');
   const [editText, setEditText] = useState('');
+  const [ranNumb, setRanNumb] = useState(5);
 
   const addCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(e.target.value);
@@ -44,14 +45,13 @@ const CommentList = () => {
     setEditText(e.target.value);
   };
 
-  const randomId = Math.floor(Math.random() * 10) + 5;
   const time = new Date().toString().split(' ');
   const actuallDate = `${time[2]}` + ' ' + `${time[1]}` + ' ' + `${time[3]}`;
 
   const newComment = {
-    id: randomId,
-    key: randomId,
-    content: editText,
+    id: ranNumb,
+    key: ranNumb,
+    content: commentText,
     createdAt: actuallDate,
     score: 0,
     user: {
@@ -70,16 +70,15 @@ const CommentList = () => {
         comments: [...prevData.comments, newComment],
       };
     });
-    console.log(comments);
   };
 
-  const editCommentUpdate = (id: number) => {
+  const editCommentUpdate = () => {
     setData((prevData) => {
       return {
         ...prevData,
         comments: [
           ...prevData.comments.map((comment) => {
-            if (comment.id === id) {
+            if (comment.id === newComment.key) {
               return {
                 ...comment,
                 content: editText,
@@ -95,6 +94,13 @@ const CommentList = () => {
     });
   };
 
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { customAlphabet } = require('nanoid');
+    const randomNum = customAlphabet('1234567890', 2);
+    setRanNumb(randomNum());
+  }, [addNewComment]);
+
   const comments = data.comments.map((comment) => {
     return (
       <React.Fragment key={comment.id}>
@@ -106,7 +112,7 @@ const CommentList = () => {
           score={comment.score}
           createdAt={comment.createdAt}
           editCommentText={setEditTextHandler}
-          editComment={editCommentUpdate}
+          editCommentUpdate={editCommentUpdate}
           editText={editText}
         />
 
@@ -134,14 +140,16 @@ const CommentList = () => {
     );
   });
   return (
-    <CommentListStyled>
-      {comments}
-      <NewComment
-        addNewComment={addNewComment}
-        newCommentText={commentText}
-        newCommentHandler={addCommentHandler}
-      />
-    </CommentListStyled>
+    <>
+      <CommentListStyled>
+        {comments}
+        <NewComment
+          addNewComment={addNewComment}
+          newCommentText={commentText}
+          newCommentHandler={addCommentHandler}
+        />
+      </CommentListStyled>
+    </>
   );
 };
 
