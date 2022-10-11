@@ -48,7 +48,7 @@ interface CommentProps {
     }
   ];
   editCommentText?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  editComment?: () => void;
+  editCommentUpdate?: () => void;
   editText: string;
 }
 
@@ -109,11 +109,11 @@ const Comment = (props: CommentProps) => {
           ) : (
             <>
               <CommentEditInput
-                placeholder={props.editText}
+                placeholder={props.content}
                 value={props.editText}
                 onChange={props.editCommentText}
               ></CommentEditInput>
-              <Button onClick={() => props.editComment} button={'UPDATE'} />
+              <Button onClick={props.editCommentUpdate} button={'UPDATE'} />
             </>
           )}
         </div>
